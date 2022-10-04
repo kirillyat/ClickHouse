@@ -67,3 +67,8 @@ def test_overflow_parseDateTimeBestEffort(start_cluster):
         node.query("SELECT parseDateTimeBestEffort('1000-01-01 00:00:00','UTC')")
         == "1970-01-01 00:00:00\n"
     )
+    assert (
+        node.query("SELECT parseDateTimeBestEffort('2000-03-01, 00:00:00','UTC')")
+        == "2000-03-01 00:00:00\n"
+    )
+
